@@ -1,0 +1,115 @@
+FSM:
+  _: # enabled fsms
+    Passive:
+      id: 1
+    FixStand:
+      id: 2
+    Velocity:
+      id: 3
+      type: RLBase
+    GetUp:
+      id: 4
+    Fallen:
+      id: 6
+
+    Mimic_Dance1_subject2:
+      id: 5
+      type: Mimic
+
+
+  Passive:
+    transitions: 
+      FixStand: start.on_pressed
+      GetUp: A
+    mode: [
+      1,1,1,1,1,1,
+      1,1,1,1,1,1,
+      1,1,1,
+      1,1,1,1,1,1,1,
+      1,1,1,1,1,1,1,
+    ]
+    kd: [
+      3,3,3,3,3,3,
+      3,3,3,3,3,3,
+      3,3,3,
+      3,3,3,3,3,3,3,  
+      3,3,3,3,3,3,3,  
+    ]
+
+
+  FixStand:
+    transitions: 
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+      GetUp: A
+
+    kp: [
+      100,100,100,150,40,40,
+      100,100,100,150,40,40,
+      200,200,200,
+      40,40,40,40,40,40,40,
+      40,40,40,40,40,40,40,
+    ]
+    kd: [
+      2,2,2,4,2,2,
+      2,2,2,4,2,2,
+      5,5,5,
+      10,10,10,10,10,10,10,
+      10,10,10,10,10,10,10,
+    ]
+    ts: [0, 2]
+    qs: [
+      [],
+      [ -0.1, 0,0,0.3,-0.2,0,
+        -0.1, 0,0,0.3,-0.2,0,
+        0,0,0,
+        0.35, 0.18,0,0.87,0,0,0,
+        0.35,-0.18,0,0.87,0,0,0
+      ]
+    ]
+
+
+  Velocity:
+    transitions: 
+      Passive: LT + B.on_pressed
+      Mimic_Dance1_subject2: RB + A.on_pressed
+
+    policy_dir: config/policy/velocity/v1
+
+  Fallen:
+    transitions:
+      Passive: LT + B.on_pressed
+      GetUp: A
+    detection:
+      fallen_tilt_min_rad: 1.0
+      confirm_duration_s: 0.2
+      max_update_gap_s: 0.1
+
+  GetUp:
+    transitions:
+      Passive: LT + B.on_pressed
+    policy_dir: config/policy/getup/amp_reference
+    success_state: Velocity
+    failure_state: Fallen
+    trigger:
+      hold_s: 1.0
+      fallen_tilt_min_rad: 1.0
+      max_update_gap_s: 0.1
+    recovery:
+      upright_tilt_max_rad: 0.35
+      angular_speed_max_rad_s: 0.5
+      joint_speed_max_rad_s: 1.0
+      stable_duration_s: 1.0
+      timeout_s: 8.0
+      max_consecutive_inference_failures: 3
+      max_sample_gap_s: 0.1
+
+  Mimic_Dance1_subject2:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RT + A.on_pressed
+
+    motion_file: config/policy/mimic/dance1_subject2/params/dance1_subject2.npz
+    policy_dir: config/policy/mimic/dance1_subject2/
+    time_start: 0.0
+    time_end: 1000.0

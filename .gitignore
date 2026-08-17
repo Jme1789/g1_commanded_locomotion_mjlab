@@ -1,0 +1,90 @@
+*.egg-info
+.idea
+outputs
+logs
+wandb
+MUJOCO_LOG.TXT
+deploy/robots/go2/build
+deploy/robots/g1/build
+deploy/robots/h1_2/build
+deploy/robots/g1_23dof/build
+deploy/robots/r1/build
+simulate/config/gamepads/profiles/*
+!simulate/config/gamepads/profiles/.gitkeep
+deploy/robots/a2/build
+src/assets/motions/g1/dance1_subject2.npz
+simulate/build
+simulate/config/gamepads/active.yaml
+.vscode
+.worktrees/
+.agents/
+.claude/
+.codex/
+.superpowers/
+docs/superpowers/
+
+# Python 缓存与编译产物
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+develop-eggs/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# 打包 / 安装
+*.whl
+
+# 测试 / 类型检查 / 覆盖率缓存
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# 虚拟环境
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 训练产物 / 模型导出
+*.onnx
+*.pt
+*.tfevents.*
+checkpoints/
+runs/
+
+# 公开版仅保留经过选择和校验的模型。
+!artifacts/g1-commanded-locomotion-v1/model_37300.pt
+!deploy/robots/g1/config/policy/velocity/v1/exported/policy.onnx
+!deploy/robots/g1/config/policy/mimic/dance1_subject2/exported/policy.onnx
+
+# 预置 C++ 运行库是部署输入，不是本地编译产物。
+!deploy/thirdparty/onnxruntime-linux-x64-1.22.0/lib/*.so*
+!deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/*.so*
+!simulate/mujoco/lib/*.so*
+!simulate/mujoco/bin/mujoco_plugin/*.so
+
+# 本地训练/手柄配置只保留随仓库发布的示例。
+configs/training_console/**/*.yaml
+!configs/training_console/unitree-g1-stairs/baseline-smoke.yaml
+
+# 系统 / 编辑器杂项
+.DS_Store
+Thumbs.db
+*.swp
+*~
+*.orig
+*.bak
+/core
+/core.*

@@ -1,0 +1,259 @@
+{
+  "contract": {
+    "action_dim": 29,
+    "actor_observation_dim": 100,
+    "commands": [
+      "twist",
+      "swing_height",
+      "step_length"
+    ],
+    "critic_observation_dim": 302
+  },
+  "deployed_policy": "deploy/robots/g1/config/policy/velocity/v1/exported/policy.onnx",
+  "experiment": "g1_velocity_h20_balance_curriculum",
+  "metrics": {
+    "Curriculum/terrain_levels": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.9952596426010132,
+      "first_step": 32300,
+      "last": 1.7977294921875,
+      "last_step": 37300,
+      "maximum": 1.84210205078125,
+      "minimum": 0.7663981318473816,
+      "nonfinite_count": 0,
+      "tail_100_mean": 1.7868123745918274
+    },
+    "Episode_Reward/commanded_knee_forward": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": -0.00023611114011146128,
+      "first_step": 32300,
+      "last": -0.037975557148456573,
+      "last_step": 37300,
+      "maximum": -0.00023611114011146128,
+      "minimum": -0.06849892437458038,
+      "nonfinite_count": 0,
+      "tail_100_mean": -0.03831336950883269
+    },
+    "Episode_Reward/commanded_knee_lift": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": -0.00023611114011146128,
+      "first_step": 32300,
+      "last": -0.027241921052336693,
+      "last_step": 37300,
+      "maximum": -0.00023611114011146128,
+      "minimum": -0.05902973935008049,
+      "nonfinite_count": 0,
+      "tail_100_mean": -0.02675308657810092
+    },
+    "Episode_Termination/fell_over": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.0,
+      "first_step": 32300,
+      "last": 0.0416666679084301,
+      "last_step": 37300,
+      "maximum": 0.75,
+      "minimum": 0.0,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.18958333916962147
+    },
+    "Loss/entropy": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 12.692102432250977,
+      "first_step": 32300,
+      "last": 21.126970291137695,
+      "last_step": 37300,
+      "maximum": 25.155296325683594,
+      "minimum": 12.352943420410156,
+      "nonfinite_count": 0,
+      "tail_100_mean": 21.0125496673584
+    },
+    "Loss/surrogate": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.03932268172502518,
+      "first_step": 32300,
+      "last": -0.01800919882953167,
+      "last_step": 37300,
+      "maximum": 0.03932268172502518,
+      "minimum": -0.021708665415644646,
+      "nonfinite_count": 0,
+      "tail_100_mean": -0.01667435978539288
+    },
+    "Loss/value": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.008520536124706268,
+      "first_step": 32300,
+      "last": 0.035497792065143585,
+      "last_step": 37300,
+      "maximum": 0.6715213060379028,
+      "minimum": 0.00548221729695797,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.03257371436804533
+    },
+    "Metrics/knee_forward_peak_long_m": {
+      "event_count": 5000,
+      "finite_count": 5000,
+      "first": 0.14643941819667816,
+      "first_step": 32301,
+      "last": 0.14879940450191498,
+      "last_step": 37300,
+      "maximum": 0.15698941051959991,
+      "minimum": 0.13088169693946838,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.14775325536727904
+    },
+    "Metrics/knee_lift_peak_high_m": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.03691905736923218,
+      "first_step": 32300,
+      "last": 0.05565182492136955,
+      "last_step": 37300,
+      "maximum": 0.057558245956897736,
+      "minimum": 0.03691905736923218,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.055121952034533024
+    },
+    "Metrics/knee_lift_peak_low_m": {
+      "event_count": 5001,
+      "finite_count": 0,
+      "nonfinite_count": 5001
+    },
+    "Metrics/knee_lift_peak_mid_m": {
+      "event_count": 5001,
+      "finite_count": 0,
+      "nonfinite_count": 5001
+    },
+    "Metrics/landing_reach_long_m": {
+      "event_count": 5000,
+      "finite_count": 5000,
+      "first": 0.10054004192352295,
+      "first_step": 32301,
+      "last": 0.11219430714845657,
+      "last_step": 37300,
+      "maximum": 0.14129267632961273,
+      "minimum": 0.08613274991512299,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.11158529222011566
+    },
+    "Metrics/swing_peak_high_m": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.10373805463314056,
+      "first_step": 32300,
+      "last": 0.15507830679416656,
+      "last_step": 37300,
+      "maximum": 0.1601177603006363,
+      "minimum": 0.10373805463314056,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.15216125279664994
+    },
+    "Metrics/swing_peak_low_m": {
+      "event_count": 5001,
+      "finite_count": 0,
+      "nonfinite_count": 5001
+    },
+    "Metrics/swing_peak_mid_m": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.060454361140728,
+      "first_step": 32300,
+      "last": 0.09034798294305801,
+      "last_step": 37300,
+      "maximum": 0.09609261900186539,
+      "minimum": 0.060454361140728,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.0874230481684208
+    },
+    "Metrics/twist/error_vel_xy": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.007386675104498863,
+      "first_step": 32300,
+      "last": 0.5734700560569763,
+      "last_step": 37300,
+      "maximum": 3.7077414989471436,
+      "minimum": 0.007386675104498863,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.8177651107311249
+    },
+    "Metrics/twist/error_vel_yaw": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.015197714790701866,
+      "first_step": 32300,
+      "last": 1.7744176387786865,
+      "last_step": 37300,
+      "maximum": 2.242349863052368,
+      "minimum": 0.015197714790701866,
+      "nonfinite_count": 0,
+      "tail_100_mean": 1.7698926854133605
+    },
+    "Perf/total_fps": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 22900.0,
+      "first_step": 32300,
+      "last": 29354.0,
+      "last_step": 37300,
+      "maximum": 29801.0,
+      "minimum": 22900.0,
+      "nonfinite_count": 0,
+      "tail_100_mean": 29151.95
+    },
+    "Policy/mean_std": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.40293028950691223,
+      "first_step": 32300,
+      "last": 0.5322386622428894,
+      "last_step": 37300,
+      "maximum": 0.6086121201515198,
+      "minimum": 0.3986167311668396,
+      "nonfinite_count": 0,
+      "tail_100_mean": 0.5300306987762451
+    },
+    "Train/mean_episode_length": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 13.67391300201416,
+      "first_step": 32300,
+      "last": 980.0999755859375,
+      "last_step": 37300,
+      "maximum": 1000.0,
+      "minimum": 13.67391300201416,
+      "nonfinite_count": 0,
+      "tail_100_mean": 974.765302734375
+    },
+    "Train/mean_reward": {
+      "event_count": 5001,
+      "finite_count": 5001,
+      "first": 0.3607915937900543,
+      "first_step": 32300,
+      "last": 12.681527137756348,
+      "last_step": 37300,
+      "maximum": 26.28028106689453,
+      "minimum": -5.336788654327393,
+      "nonfinite_count": 0,
+      "tail_100_mean": 12.184318599700928
+    }
+  },
+  "notes": [
+    "Raw TensorBoard events and intermediate checkpoints are intentionally excluded.",
+    "Low-level swing/knee metrics contain no finite samples in this resumed curriculum segment; medium/high and long-step metrics are reported explicitly.",
+    "These training summaries are descriptive and are not a hardware safety certification."
+  ],
+  "schema_version": 1,
+  "selected_checkpoint": "artifacts/g1-commanded-locomotion-v1/model_37300.pt",
+  "source_run": "2026-08-15_21-24-51_h20-balance-curriculum-r0",
+  "training_iteration_range": [
+    32300,
+    37300
+  ]
+}

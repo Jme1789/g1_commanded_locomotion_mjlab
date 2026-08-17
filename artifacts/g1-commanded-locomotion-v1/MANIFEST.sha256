@@ -1,0 +1,7 @@
+f1e6d852972032d4abd8b054201947a8db70d5162e9784c9182eb0353268005a  artifacts/g1-commanded-locomotion-v1/model_37300.pt
+862af5917bfcc891d00690d7ee1ff4ff99396a9a592a68b0d1d9c47b4f53e5bb  artifacts/g1-commanded-locomotion-v1/agent.yaml
+6ec69c413dc7905e3f00f7769876708b0b201f3f30fbdca94edf52810ee64315  artifacts/g1-commanded-locomotion-v1/env.yaml
+c4d6eaaae46a9fae4a8d3a9bf573bf3ea2e66723ff4987a7207038d2bd0771b5  artifacts/g1-commanded-locomotion-v1/training_summary.json
+90c048283b0f81b5b2c79aafd25882ccf43c4e3279c8439265e1b5144d6665cb  deploy/robots/g1/config/config.yaml
+e4af4ffabea4a4d24bb31949701dd0541416a50ce328a3b96ba87efc158212e1  deploy/robots/g1/config/policy/velocity/v1/params/deploy.yaml
+e3d16f4dbc67fc9e78d5eaceaa7370ef5df12e4114bddacf518bc9cdeb0ddb89  deploy/robots/g1/config/policy/velocity/v1/exported/policy.onnx

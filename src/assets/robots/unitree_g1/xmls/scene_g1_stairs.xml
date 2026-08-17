@@ -1,0 +1,13 @@
+<mujoco model="scene_g1_stairs">
+  <include file="scene_g1.xml"/>
+
+  <worldbody>
+    <!-- Three 8 cm risers at 30 cm pitch, followed by a stable top landing. -->
+    <geom name="stair_level_1" type="box" pos="1.50 0 0.04" size="0.75 0.60 0.04"
+          friction="1.0 0.005 0.0001" rgba="0.55 0.58 0.62 1"/>
+    <geom name="stair_level_2" type="box" pos="1.65 0 0.08" size="0.60 0.60 0.08"
+          friction="1.0 0.005 0.0001" rgba="0.48 0.51 0.55 1"/>
+    <geom name="stair_level_3" type="box" pos="1.80 0 0.12" size="0.45 0.60 0.12"
+          friction="1.0 0.005 0.0001" rgba="0.41 0.44 0.48 1"/>
+  </worldbody>
+</mujoco>

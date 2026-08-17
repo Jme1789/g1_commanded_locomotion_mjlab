@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G1 游戏手柄校准器</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script type="module" src="/static/app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header id="app-header" class="app-header">
+        <div><p class="eyebrow">LOCAL CALIBRATION</p><h1>游戏手柄校准器</h1><p>仅在本机采集输入并保存配置；不会启动或停止 MuJoCo 与控制器。</p></div>
+        <span class="local-badge">127.0.0.1 · 本地</span>
+      </header>
+
+      <section id="process-interlock" class="panel interlock" aria-labelledby="interlock-heading">
+        <div><p class="eyebrow">SAFETY INTERLOCK</p><h2 id="interlock-heading">进程安全检查</h2></div>
+        <div id="blocker-list" class="blocker-list">正在检查仿真与控制进程…</div>
+        <button id="refresh-devices" type="button" class="button secondary">重新检查</button>
+      </section>
+
+      <main class="workspace">
+        <aside class="rail" aria-label="设备与配置">
+          <section class="panel" aria-labelledby="device-heading">
+            <div class="section-heading"><div><p class="eyebrow">HARDWARE</p><h2 id="device-heading">选择设备</h2></div></div>
+            <div id="device-list" class="card-list" aria-live="polite"></div>
+            <label class="field">随附模板（可选）<select id="template-select"><option value="">不使用模板</option></select></label>
+            <button id="start-session" type="button" class="button primary">开始校准</button>
+          </section>
+
+          <section class="panel" aria-labelledby="profile-heading">
+            <div class="section-heading"><div><p class="eyebrow">PROFILES</p><h2 id="profile-heading">配置文件</h2></div></div>
+            <div id="profile-list" class="card-list" aria-live="polite"></div>
+            <div class="button-row">
+              <label class="button secondary file-button">导入 YAML<input id="profile-import" type="file" accept=".yaml,.yml,application/yaml"></label>
+              <button id="profile-export" type="button" class="button secondary">导出所选</button>
+              <button id="profile-activate" type="button" class="button secondary">激活所选</button>
+            </div>
+          </section>
+        </aside>
+
+        <div class="calibration-column">
+          <section id="neutral-step" class="panel step-panel" aria-labelledby="neutral-heading">
+            <div><p class="step-number">步骤 1</p><h2 id="neutral-heading">保持摇杆与按键静止</h2></div>
+            <progress id="neutral-progress" max="100" value="0">0%</progress>
+            <p id="neutral-status">开始会话后将自动采集中心点与噪声。</p>
+          </section>
+
+          <section id="guided-step" class="panel step-panel" aria-labelledby="guided-heading">
+            <div class="section-heading"><div><p class="step-number">步骤 2</p><h2 id="guided-heading">逐项操作实体控制器</h2></div><span id="session-state" class="state-pill">未开始</span></div>
+            <div class="guided-grid">
+              <label class="field">逻辑控制项<select id="control-select"></select></label>
+              <div class="button-row">
+                <button id="begin-step" type="button" class="button primary">开始采集</button>
+                <button id="confirm-step" type="button" class="button primary">确认候选</button>
+                <button id="redo-step" type="button" class="button secondary">重新采集</button>
+                <button id="unsupported-step" type="button" class="button secondary">标记不支持</button>
+              </div>
+            </div>
+            <ol id="confirmed-controls" class="confirmed-list" aria-label="已确认控制项"></ol>
+          </section>
+
+          <section class="monitor-grid" aria-label="输入监控">
+            <article id="raw-monitor" class="panel" aria-labelledby="raw-heading">
+              <p class="eyebrow">RAW INPUT</p><h2 id="raw-heading">原始输入</h2>
+              <div class="raw-columns"><div><h3>轴</h3><div id="raw-axes"></div></div><div><h3>按键</h3><div id="raw-buttons"></div></div></div>
+              <ol id="raw-events" class="event-list" aria-label="最近输入事件"></ol>
+            </article>
+            <article id="candidate-panel" class="panel" aria-labelledby="candidate-heading">
+              <p class="eyebrow">CANDIDATE</p><h2 id="candidate-heading">检测候选</h2>
+              <dl id="candidate-details" class="detail-grid"><div><dt>来源</dt><dd>—</dd></div><div><dt>索引</dt><dd>—</dd></div><div><dt>方向 / 范围</dt><dd>—</dd></div><div><dt>得分</dt><dd>—</dd></div><div><dt>歧义</dt><dd>—</dd></div></dl>
+              <div id="candidate-choices" class="candidate-choices"></div>
+            </article>
+          </section>
+
+          <section id="manual-editor" class="panel" aria-labelledby="manual-heading">
+            <div class="section-heading"><div><p class="eyebrow">MANUAL OVERRIDE</p><h2 id="manual-heading">手动编辑绑定</h2></div></div>
+            <form id="manual-form" class="manual-form">
+              <label class="field">绑定类型<select id="binding-kind" name="kind"><option value="button">按键</option><option value="stick">摇杆轴</option><option value="axis-trigger">轴扳机</option><option value="button-trigger">按键扳机</option><option value="axis-dpad">方向轴</option></select></label>
+              <div id="manual-fields" class="manual-fields"></div>
+              <button id="manual-confirm" type="submit" class="button primary">使用手动值确认</button>
+            </form>
+          </section>
+
+          <section id="logical-preview" class="panel" aria-labelledby="preview-heading">
+            <div class="section-heading"><div><p class="step-number">步骤 3</p><h2 id="preview-heading">归一化逻辑预览</h2></div><button id="refresh-preview" type="button" class="button secondary">刷新预览</button></div>
+            <div id="preview-values" class="preview-grid"></div>
+            <fieldset id="preview-checklist"><legend>逐项重复实体操作并确认预览</legend><div id="preview-confirmations" class="check-grid"></div></fieldset>
+          </section>
+
+          <section id="save-panel" class="panel save-panel" aria-labelledby="save-heading">
+            <div><p class="step-number">步骤 4</p><h2 id="save-heading">保存设备配置</h2><p>仅提交上方已勾选的预览确认项。</p></div>
+            <div class="button-row"><button id="cancel-session" type="button" class="button danger">取消会话</button><button id="save-profile" type="button" class="button primary" disabled>保存配置</button></div>
+          </section>
+        </div>
+      </main>
+
+      <aside id="restart-banner" class="restart-banner" hidden>配置已保存或激活。<strong>重启 MuJoCo 后生效</strong>；当前运行中的进程不会被操作。</aside>
+      <div id="status-announcements" class="announcements" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <dialog id="confirmation-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-message">
+      <form method="dialog" class="dialog-card">
+        <h2 id="dialog-title">确认激活配置</h2><p id="dialog-message">激活只会更新下次启动使用的选择，不会影响正在运行的 MuJoCo。</p>
+        <div class="button-row"><button id="dialog-cancel" type="button" class="button secondary">取消</button><button id="dialog-confirm" type="submit" class="button primary">确认激活</button></div>
+      </form>
+    </dialog>
+  </body>
+</html>

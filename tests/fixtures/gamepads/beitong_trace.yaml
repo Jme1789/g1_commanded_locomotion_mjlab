@@ -1,0 +1,84 @@
+neutral:
+  - now: 0.0
+    axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+    buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  - now: 1.0
+    axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+    buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+actions:
+  - control: rt
+    samples:
+      - now: 1.02
+        axes: [0, 0, 0, 0, 32767, -32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events:
+          - {time_ms: 1020, value: 32767, kind: axis, number: 4, initial: false}
+      - now: 1.08
+        axes: [0, 0, 0, 0, 32767, -32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+      - now: 1.14
+        axes: [0, 0, 0, 0, 32767, -32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+    release:
+      now: 1.16
+      axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+      buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  - control: lt
+    samples:
+      - now: 1.20
+        axes: [0, 0, 0, 0, -32767, 32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events:
+          - {time_ms: 1200, value: 32767, kind: axis, number: 5, initial: false}
+      - now: 1.26
+        axes: [0, 0, 0, 0, -32767, 32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+      - now: 1.32
+        axes: [0, 0, 0, 0, -32767, 32767, 0, 0]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+    release:
+      now: 1.34
+      axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+      buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  - control: dpad_up
+    samples:
+      - now: 1.38
+        axes: [0, 0, 0, 0, -32767, -32767, 0, -32767]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events:
+          - {time_ms: 1380, value: -32767, kind: axis, number: 7, initial: false}
+      - now: 1.44
+        axes: [0, 0, 0, 0, -32767, -32767, 0, -32767]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+      - now: 1.50
+        axes: [0, 0, 0, 0, -32767, -32767, 0, -32767]
+        buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+    release:
+      now: 1.52
+      axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+      buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  - control: a
+    samples:
+      - now: 1.56
+        axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+        buttons: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events:
+          - {time_ms: 1560, value: 1, kind: button, number: 0, initial: false}
+      - now: 1.62
+        axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+        buttons: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+      - now: 1.68
+        axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+        buttons: [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        events: []
+    release:
+      now: 1.70
+      axes: [0, 0, 0, 0, -32767, -32767, 0, 0]
+      buttons: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

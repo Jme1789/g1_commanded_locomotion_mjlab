@@ -1,0 +1,30 @@
+schema_version: 1
+device:
+  vendor_id: 20bc
+  product_id: '5159'
+  name: BEITONG BTP-KP20D
+  serial: null
+sticks:
+  left_x: {axis: 0, center: 0, min: -32767, max: 32767, invert: false, deadzone: 0.05}
+  left_y: {axis: 1, center: 0, min: -32767, max: 32767, invert: true, deadzone: 0.05}
+  right_x: {axis: 2, center: 0, min: -32767, max: 32767, invert: false, deadzone: 0.05}
+  right_y: {axis: 3, center: 0, min: -32767, max: 32767, invert: true, deadzone: 0.05}
+triggers:
+  lt: {source: axis, index: 5, released: -32767, pressed: 32767, threshold: 0.5, correlated_button: null}
+  rt: {source: axis, index: 4, released: -32767, pressed: 32767, threshold: 0.5, correlated_button: null}
+buttons:
+  a: {source: button, index: 0}
+  b: {source: button, index: 1}
+  x: {source: button, index: 3}
+  y: {source: button, index: 4}
+  lb: {source: button, index: 6}
+  rb: {source: button, index: 7}
+  start: {source: button, index: 11}
+  back: {source: button, index: 10}
+  left_stick: {source: button, index: 8}
+  right_stick: {source: button, index: 9}
+dpad:
+  up: {source: axis, index: 7, direction: negative, threshold: 0.5}
+  down: {source: axis, index: 7, direction: positive, threshold: 0.5}
+  left: {source: axis, index: 6, direction: negative, threshold: 0.5}
+  right: {source: axis, index: 6, direction: positive, threshold: 0.5}

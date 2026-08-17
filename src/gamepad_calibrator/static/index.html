@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>G1 手柄快速映射</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <script type="module" src="/static/quick_app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell quick-shell">
+      <header id="app-header" class="app-header">
+        <div>
+          <p class="eyebrow">LOCAL INPUT OBSERVER</p>
+          <h1>G1 手柄快速映射</h1>
+          <p>本页只观察和映射输入，不会控制 MuJoCo、g1_ctrl 或机器人。</p>
+        </div>
+        <span class="local-badge">127.0.0.1 · 本地</span>
+      </header>
+
+      <section class="quick-connection panel" aria-label="连接与安全">
+        <div>
+          <p class="eyebrow">CONNECTION</p>
+          <h2>手柄连接</h2>
+          <span id="connection-status" class="state-pill" aria-live="polite">正在检测…</span>
+          <div id="device-details" class="device-details" aria-live="polite"></div>
+        </div>
+        <div id="process-interlock" class="interlock-summary" aria-live="assertive">
+          未检测到进程冲突。页面不会启动、停止或控制任何进程。
+        </div>
+      </section>
+
+      <main class="quick-workspace">
+        <section id="raw-monitor" class="panel" aria-label="原始输入监测">
+          <p class="eyebrow">RAW INPUT</p>
+          <h2>原始输入监测</h2>
+          <div class="raw-columns">
+            <div>
+              <h3>轴</h3>
+              <div id="raw-axes" class="quick-values"></div>
+            </div>
+            <div>
+              <h3>按键</h3>
+              <div id="raw-buttons" class="quick-values"></div>
+            </div>
+          </div>
+          <h3>原始事件（含重复帧）</h3>
+          <ol id="raw-events" class="event-list quick-event-list"></ol>
+        </section>
+
+        <section class="panel" aria-label="G1 逻辑控制映射">
+          <p class="eyebrow">ONE ACTION BINDING</p>
+          <h2>点击 G1 逻辑控制，再操作一次手柄</h2>
+          <div
+            id="mapping-guidance"
+            class="mapping-guidance"
+            data-state="idle"
+            role="status"
+            aria-live="polite"
+          >点击一个 G1 逻辑控制开始映射。</div>
+          <div id="mapping-grid" class="mapping-grid" aria-live="polite"></div>
+        </section>
+
+        <section id="logical-preview" class="panel" aria-label="后端逻辑诊断">
+          <p class="eyebrow">BACKEND DIAGNOSTICS</p>
+          <h2>后端逻辑诊断</h2>
+          <div class="logical-diagnostics">
+            <div>
+              <h3>Level / Pressed</h3>
+              <div id="logical-levels" class="quick-values"></div>
+            </div>
+            <div>
+              <h3>Press / Release</h3>
+              <div id="edge-events" class="quick-values"></div>
+            </div>
+            <div>
+              <h3>Combo</h3>
+              <div id="combo-preview" class="quick-values"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel quick-profiles" aria-label="保存与配置">
+          <div>
+            <p class="eyebrow">PROFILES</p>
+            <h2>保存与配置</h2>
+          </div>
+          <button id="save-profile" type="button" class="button primary" disabled>保存 YAML</button>
+          <div id="profile-list" class="card-list" aria-live="polite"></div>
+          <div class="button-row">
+            <label class="button secondary file-button">
+              导入 YAML
+              <input id="profile-import" type="file" accept=".yaml,.yml,application/yaml">
+            </label>
+            <button id="profile-export" type="button" class="button secondary">导出当前配置</button>
+            <button id="profile-activate" type="button" class="button secondary">激活当前配置</button>
+          </div>
+        </section>
+      </main>
+
+      <aside id="restart-banner" class="restart-banner" hidden>
+        配置已保存或激活。<strong>重启 MuJoCo 后生效</strong>；当前进程与机器人不会被操作。
+      </aside>
+      <div id="status-announcements" class="announcements" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <dialog id="confirmation-dialog" aria-label="确认激活配置">
+      <form method="dialog" class="dialog-card">
+        <h2>确认激活配置</h2>
+        <p>激活只更新下次启动使用的 YAML，不控制当前 MuJoCo 或机器人。</p>
+        <div class="button-row">
+          <button type="submit" value="cancel" class="button secondary">取消</button>
+          <button type="submit" value="activate" class="button primary">确认激活</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

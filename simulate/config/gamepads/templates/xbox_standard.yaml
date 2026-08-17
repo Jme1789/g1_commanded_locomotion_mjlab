@@ -1,0 +1,26 @@
+schema_version: 1
+template_name: Xbox Standard
+sticks:
+  left_x: {axis: 0, center: 0, min: -32768, max: 32767, invert: false, deadzone: 0.05}
+  left_y: {axis: 1, center: 0, min: -32768, max: 32767, invert: true, deadzone: 0.05}
+  right_x: {axis: 3, center: 0, min: -32768, max: 32767, invert: false, deadzone: 0.05}
+  right_y: {axis: 4, center: 0, min: -32768, max: 32767, invert: true, deadzone: 0.05}
+triggers:
+  lt: {source: axis, index: 2, released: -32768, pressed: 32767, threshold: 0.5, correlated_button: null}
+  rt: {source: axis, index: 5, released: -32768, pressed: 32767, threshold: 0.5, correlated_button: null}
+buttons:
+  a: {source: button, index: 0}
+  b: {source: button, index: 1}
+  x: {source: button, index: 2}
+  y: {source: button, index: 3}
+  lb: {source: button, index: 4}
+  rb: {source: button, index: 5}
+  start: {source: button, index: 7}
+  back: {source: button, index: 6}
+  left_stick: {unsupported: true}
+  right_stick: {unsupported: true}
+dpad:
+  up: {source: axis, index: 7, direction: negative, threshold: 0.5}
+  down: {source: axis, index: 7, direction: positive, threshold: 0.5}
+  left: {source: axis, index: 6, direction: negative, threshold: 0.5}
+  right: {source: axis, index: 6, direction: positive, threshold: 0.5}
