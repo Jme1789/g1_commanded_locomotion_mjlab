@@ -3,6 +3,7 @@
 outputs
 logs
 wandb
+*.log
 MUJOCO_LOG.TXT
 deploy/robots/go2/build
 deploy/robots/g1/build
@@ -16,6 +17,9 @@ src/assets/motions/g1/dance1_subject2.npz
 simulate/build
 simulate/config/gamepads/active.yaml
 .vscode
+.env
+.env.*
+!.env.example
 .worktrees/
 .agents/
 .claude/
@@ -35,6 +39,8 @@ develop-eggs/
 .eggs/
 *.egg
 pip-wheel-metadata/
+wheelhouse/
+/site/
 
 # 打包 / 安装
 *.whl
@@ -43,6 +49,9 @@ pip-wheel-metadata/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.hypothesis/
+.nox/
+.cache/
 .coverage
 .coverage.*
 htmlcov/
@@ -60,7 +69,9 @@ ENV/
 # 训练产物 / 模型导出
 *.onnx
 *.pt
+*.pth
 *.tfevents.*
+*.prof
 checkpoints/
 runs/
 
@@ -74,10 +85,6 @@ runs/
 !deploy/thirdparty/onnxruntime-linux-aarch64-1.22.0/lib/*.so*
 !simulate/mujoco/lib/*.so*
 !simulate/mujoco/bin/mujoco_plugin/*.so
-
-# 本地训练/手柄配置只保留随仓库发布的示例。
-configs/training_console/**/*.yaml
-!configs/training_console/unitree-g1-stairs/baseline-smoke.yaml
 
 # 系统 / 编辑器杂项
 .DS_Store

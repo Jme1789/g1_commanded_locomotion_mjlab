@@ -7,7 +7,7 @@
 
 - 同时接收速度、抬腿高度和步长指令的 PPO locomotion policy；
 - 可按固定顺序切换档位并打印日志的 Play；
-- 仅本机回环访问的训练调参台和独立手柄映射台；
+- 独立的本机手柄检查与映射台；
 - 支持第三方 Linux 手柄的 MuJoCo Sim2Sim；
 - 支持 D-pad 单步、肩键转向、Fallen 阻尼保护和可选 GetUp 的 G1 控制器；
 - x86_64 仿真构建与 aarch64 G1 实机部署输入。
@@ -31,7 +31,7 @@ G1 指令化 locomotion 链路。
 
 ```mermaid
 flowchart LR
-  CFG[训练配置与调参台] --> TRAIN[PPO 训练]
+  CFG[G1 任务配置] --> TRAIN[PPO 训练]
   TRAIN --> PT[最终 PT checkpoint]
   PT --> PLAY[确定性 Play]
   PT --> ONNX[部署 ONNX]
@@ -42,8 +42,9 @@ flowchart LR
   CTRL --> ROBOT[G1 实机 DDS]
 ```
 
-详细说明见[架构](docs/architecture.md)、[模型卡](docs/model-card.md)、
-[部署](docs/deployment.md)和[安全边界](docs/safety.md)。
+详细说明见[配置索引](docs/configuration.md)、[架构](docs/architecture.md)、
+[模型卡](docs/model-card.md)、[部署](docs/deployment.md)和
+[安全边界](docs/safety.md)。
 
 ## 安装
 
@@ -178,5 +179,5 @@ GetUp 的参考 ONNX 没有随公开仓库分发，因为来源仓库没有声�
 [unitreerobotics/unitree_rl_mjlab](https://github.com/unitreerobotics/unitree_rl_mjlab)
 并使用 [MJLab](https://github.com/mujocolab/mjlab)、MuJoCo-Warp、
 Unitree SDK2、ONNX Runtime、cnpy 等组件。详情见 [NOTICE.md](NOTICE.md)
-及随仓库保留的第三方许可证。项目代码按 [LICENCE](LICENCE) 中的
+及随仓库保留的第三方许可证。项目代码按 [LICENSE](LICENSE) 中的
 Apache-2.0 条款发布；第三方产物仍遵循各自许可证。

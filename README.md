@@ -9,7 +9,7 @@ training-to-deployment stack:
 - command-conditioned PPO locomotion with velocity, swing-height, and
   step-length inputs;
 - deterministic Play for visual comparison of command levels;
-- a loopback-only training console and a standalone gamepad mapping console;
+- a standalone gamepad inspection and mapping console;
 - MuJoCo sim-to-sim deployment with a third-party Linux gamepad;
 - a G1 controller with single-step D-pad commands, shoulder-button yaw,
   Fallen damping protection, and an optional GetUp state;
@@ -34,7 +34,7 @@ but only the G1 commanded-locomotion path above is release-validated.
 
 ```mermaid
 flowchart LR
-  CFG[Training config and browser console] --> TRAIN[PPO training]
+  CFG[G1 task configuration] --> TRAIN[PPO training]
   TRAIN --> PT[Selected PT checkpoint]
   PT --> PLAY[Deterministic Play]
   PT --> ONNX[Exported velocity ONNX]
@@ -45,8 +45,9 @@ flowchart LR
   CTRL --> ROBOT[Physical G1 over DDS]
 ```
 
-See [architecture](docs/architecture.md), [model card](docs/model-card.md),
-[deployment](docs/deployment.md), and [safety](docs/safety.md).
+See [configuration](docs/configuration.md), [architecture](docs/architecture.md),
+[model card](docs/model-card.md), [deployment](docs/deployment.md), and
+[safety](docs/safety.md).
 
 ## Installation
 
@@ -191,5 +192,5 @@ This work is derived from
 and uses [MJLab](https://github.com/mujocolab/mjlab), MuJoCo-Warp, Unitree SDK2,
 ONNX Runtime, cnpy, and other third-party components. See [NOTICE.md](NOTICE.md)
 and the bundled license files. Repository code is distributed under the
-Apache-2.0 terms in [LICENCE](LICENCE); individual third-party artifacts remain
+Apache-2.0 terms in [LICENSE](LICENSE); individual third-party artifacts remain
 under their own licenses.

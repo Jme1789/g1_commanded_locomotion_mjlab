@@ -24,7 +24,7 @@ python -m pip install -e .
 ~~~
 
 The package pins the core MJLab, MuJoCo-Warp, FastAPI, Uvicorn, HTTPX, and
-PyYAML dependencies in `setup.py`. Install the correct CUDA-enabled PyTorch
+PyYAML dependencies in `pyproject.toml`. Install the correct CUDA-enabled PyTorch
 build for the host before training if it is not already supplied by the
 environment.
 
@@ -76,13 +76,7 @@ sha256sum --check artifacts/g1-commanded-locomotion-v1/MANIFEST.sha256
 This verifies the selected PT checkpoint, its configuration snapshots, compact
 training evidence, and matching velocity ONNX policy.
 
-## Local web tools
-
-Training console:
-
-~~~bash
-python -m scripts.tuning_console
-~~~
+## Local web tool
 
 Gamepad mapping console:
 
@@ -90,8 +84,10 @@ Gamepad mapping console:
 python -m scripts.gamepad_calibrator
 ~~~
 
-Both bind to the local loopback interface by default. Do not expose them to an
-untrusted network.
+It binds to the local loopback interface by default. Do not expose it to an
+untrusted network. The optional browser-based training console is maintained
+separately in
+[mjlab-training-console](https://github.com/Jme1789/mjlab-training-console).
 
 ## Common setup failures
 

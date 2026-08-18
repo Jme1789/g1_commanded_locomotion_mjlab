@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import importlib
+import subprocess
+import sys
 from pathlib import Path
 
 import pytest
@@ -20,6 +22,34 @@ from scripts.train import (
 def register_tasks() -> None:
   importlib.import_module("mjlab.tasks")
   importlib.import_module("src.tasks")
+
+
+def test_training_cli_and_source_module_share_one_implementation() -> None:
+  public_module = importlib.import_module("scripts.train")
+  implementation_module = importlib.import_module("src.training.train")
+
+  assert public_module is implementation_module
+  assert public_module.prepare_train_config is prepare_train_config
+  assert public_module.render_effective_config is render_effective_config
+
+
+def test_training_cli_runs_directly_outside_repository_root(tmp_path: Path) -> None:
+  repository_root = Path(__file__).resolve().parents[1]
+  result = subprocess.run(
+    [
+      sys.executable,
+      str(repository_root / "scripts" / "train.py"),
+      "Unitree-G1-H20-BalanceCurriculum",
+      "--help",
+    ],
+    cwd=tmp_path,
+    check=False,
+    capture_output=True,
+    text=True,
+  )
+
+  assert result.returncode == 0, result.stderr
+  assert "Unitree-G1-H20-BalanceCurriculum" in result.stdout
 
 
 def test_training_runtime_forces_warp_cubin_output(monkeypatch) -> None:

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "g1-commanded-locomotion-mjlab"
+version = "0.1.0"
+description = "Command-conditioned locomotion training and deployment for the Unitree G1"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE.md", "doc/license/*"]
+authors = [{ name = "Jme1789" }]
+dependencies = [
+  "mjlab==1.2.0",
+  "mujoco-warp==3.5.0",
+  "fastapi==0.139.2",
+  "uvicorn==0.51.0",
+  "httpx==0.28.1",
+  "PyYAML==6.0.3",
+]
+
+[project.urls]
+Repository = "https://github.com/Jme1789/g1-commanded-locomotion-mjlab"
+Documentation = "https://github.com/Jme1789/g1-commanded-locomotion-mjlab/tree/main/docs"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.*"]
+
+[tool.setuptools.package-data]
+"src.gamepad_calibrator" = ["static/*"]
+"src.assets.robots.unitree_g1" = ["xmls/*.xml", "xmls/assets/*.STL"]
+"src.assets.motions" = ["g1/*.csv", "g1_23dof/*.csv"]

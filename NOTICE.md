@@ -5,7 +5,7 @@
 This repository is derived from
 [Unitree Robotics' unitree_rl_mjlab](https://github.com/unitreerobotics/unitree_rl_mjlab).
 Upstream source and this project's source modifications are distributed under
-the Apache License 2.0 in `LICENCE`, except where a bundled component states a
+the Apache License 2.0 in `LICENSE`, except where a bundled component states a
 different license.
 
 The project also builds on MJLab, MuJoCo/MuJoCo-Warp, RSL-RL, PyTorch, Warp,

@@ -6,11 +6,6 @@ This repository is the first completed phase of a G1-only commanded locomotion
 stack. It covers training, deterministic Play, gamepad input, MuJoCo sim-to-sim,
 the G1 finite-state controller, and aarch64 deployment inputs.
 
-Stepping-stone or plum-blossom-pole locomotion is deliberately outside this
-boundary. That work may need a different command representation, observation
-contract, terrain generator, policy architecture, and evaluation protocol, so
-it should begin in a separate repository rather than replacing this release.
-
 ## Training data flow
 
 ~~~mermaid
@@ -108,9 +103,9 @@ absent or invalid.
 | --- | --- |
 | `src/tasks/velocity/config/g1/` | G1 task and PPO configurations |
 | `src/tasks/velocity/mdp/` | command, observation, reward, and termination terms |
-| `scripts/train.py` | CLI training entry point and tuning-profile integration |
+| `scripts/train.py` | thin CLI training entry point |
+| `src/training/train.py` | training configuration, validation, logging, and launch implementation |
 | `scripts/play_forward.py` | deterministic command-level Play |
-| `src/training_console/` | local training/terminal/TensorBoard control plane |
 | `src/gamepad_calibrator/` | local joystick inspection and mapping UI |
 | `simulate/src/gamepad/` | strict C++ profile parser, discovery, and logical mapper |
 | `deploy/include/isaaclab/` | policy environment and external command pipeline |

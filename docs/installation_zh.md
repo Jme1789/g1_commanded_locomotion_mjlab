@@ -23,7 +23,7 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 ~~~
 
-`setup.py` 固定了 MJLab、MuJoCo-Warp、FastAPI、Uvicorn、HTTPX 和 PyYAML
+`pyproject.toml` 固定了 MJLab、MuJoCo-Warp、FastAPI、Uvicorn、HTTPX 和 PyYAML
 等核心依赖。若环境未预装 PyTorch，请先按本机 CUDA 版本安装正确的 GPU 版本。
 
 检查任务注册：
@@ -69,15 +69,9 @@ cmake --build deploy/robots/g1/build --target g1_ctrl -j2
 sha256sum --check artifacts/g1-commanded-locomotion-v1/MANIFEST.sha256
 ~~~
 
-该清单覆盖最终 PT、训练配置快照、精简训练指标、趋势图和对应 velocity ONNX。
+该清单覆盖最终 PT、训练配置快照、精简训练指标和对应 velocity ONNX。
 
 ## 本地网页工具
-
-训练调参台：
-
-~~~bash
-python -m scripts.tuning_console
-~~~
 
 手柄映射台：
 
@@ -85,7 +79,9 @@ python -m scripts.tuning_console
 python -m scripts.gamepad_calibrator
 ~~~
 
-两者默认只监听本地回环地址，不应暴露到不可信网络。
+它默认只监听本地回环地址，不应暴露到不可信网络。可选的浏览器训练调参台已在
+[mjlab-training-console](https://github.com/Jme1789/mjlab-training-console)
+中独立维护。
 
 ## 常见问题
 
