@@ -87,7 +87,7 @@ python -m scripts.gamepad_calibrator
 It binds to the local loopback interface by default. Do not expose it to an
 untrusted network. The optional browser-based training console is maintained
 separately in
-[mjlab-training-console](https://github.com/Jme1789/mjlab-training-console).
+[mjlab_training_console](https://github.com/Jme1789/mjlab_training_console).
 
 ## Common setup failures
 

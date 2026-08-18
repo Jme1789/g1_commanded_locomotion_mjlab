@@ -51,8 +51,8 @@ flowchart LR
 推荐 Ubuntu 22.04、Python 3.11。训练需要可用的 NVIDIA GPU、CUDA 与驱动。
 
 ```bash
-git clone https://github.com/Jme1789/g1-commanded-locomotion-mjlab.git
-cd g1-commanded-locomotion-mjlab
+git clone https://github.com/Jme1789/g1_commanded_locomotion_mjlab.git
+cd g1_commanded_locomotion_mjlab
 
 sudo apt install -y \
   libyaml-cpp-dev libboost-all-dev libeigen3-dev \

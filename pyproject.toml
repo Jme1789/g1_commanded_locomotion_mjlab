@@ -3,7 +3,7 @@ requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "g1-commanded-locomotion-mjlab"
+name = "g1_commanded_locomotion_mjlab"
 version = "0.1.0"
 description = "Command-conditioned locomotion training and deployment for the Unitree G1"
 readme = "README.md"
@@ -21,8 +21,8 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/Jme1789/g1-commanded-locomotion-mjlab"
-Documentation = "https://github.com/Jme1789/g1-commanded-locomotion-mjlab/tree/main/docs"
+Repository = "https://github.com/Jme1789/g1_commanded_locomotion_mjlab"
+Documentation = "https://github.com/Jme1789/g1_commanded_locomotion_mjlab/tree/main/docs"
 
 [tool.setuptools]
 include-package-data = true

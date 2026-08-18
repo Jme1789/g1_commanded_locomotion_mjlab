@@ -80,7 +80,7 @@ python -m scripts.gamepad_calibrator
 ~~~
 
 它默认只监听本地回环地址，不应暴露到不可信网络。可选的浏览器训练调参台已在
-[mjlab-training-console](https://github.com/Jme1789/mjlab-training-console)
+[mjlab_training_console](https://github.com/Jme1789/mjlab_training_console)
 中独立维护。
 
 ## 常见问题
